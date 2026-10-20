@@ -2,16 +2,20 @@
 import { ref } from 'vue'
 
 import {  useRouter } from 'vue-router'
+import { useAppStore } from '@/stores/app'
+
 const route = useRouter()
 
 const user = ref('')
 const password = ref('')
 
+const store = useAppStore()
+
 function handleLogin(){
     if(user.value=="user" && password.value=="123"){
       alert("tot correcte")
+      store.setLoginInfo({loggedIn: true,username: "Álvaro",image: "https://randomuser.me/api/portraits/men/85.jpg"})
       route.push('/votacions')
-      
     }
     else{
       alert("error en les credencials")

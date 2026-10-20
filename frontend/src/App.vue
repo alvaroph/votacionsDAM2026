@@ -1,12 +1,14 @@
 <script setup>
 import {  RouterView } from 'vue-router'
+import { useAppStore } from '@/stores/app'
+
+const store = useAppStore()
 
 </script>
 
 <template>
   <v-app>
   <header>
-   
     <div class="wrapper">
       <nav>
         <v-btn  to="/">Login</v-btn>
@@ -14,10 +16,13 @@ import {  RouterView } from 'vue-router'
       </nav>
     </div>
   </header>
+<v-main>
+<RouterView />
 
-  <RouterView />
-
+</v-main>
+  
   </v-app>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
