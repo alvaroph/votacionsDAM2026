@@ -30,8 +30,9 @@ wss.on('connection', ws => {
 
   ws.on('message', message => {
     try {
+      console.log("missatge rebut "+message)
+      
       const parsedMessage = JSON.parse(message);
-
       if (parsedMessage.hasOwnProperty('vote')) {
         const voteIndex = parsedMessage.vote;
         if (voteIndex >= 0 && voteIndex < votos.length) {

@@ -1,11 +1,9 @@
 <script setup>
-import { ref } from 'vue'
-
-defineProps([ 'voteCount'])
-defineEmits(['votar'])
+const props = defineProps(['voteCount', 'idOption'])
+const emit = defineEmits(['votar'])
 
 function vote(){
-    
+  emit('votar', props.idOption);
 }
 </script>
 

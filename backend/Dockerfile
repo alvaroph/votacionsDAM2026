@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18
+FROM node:22-alpine
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Command to run the application in development mode
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
