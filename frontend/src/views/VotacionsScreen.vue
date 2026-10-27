@@ -4,7 +4,7 @@ import {  useRouter } from 'vue-router'
 const route = useRouter()
 import botoVotar from '@/components/botoVotar.vue'
 import { onMounted , onUnmounted } from 'vue'
-
+import ChartComponent from '@/components/ChartComponent.vue';
 //PINIA
 import { useAppStore } from '@/stores/app'
 const store = useAppStore()
@@ -44,6 +44,13 @@ function gestioVot(id){
 <template>
   <div >
   
+     <v-row>
+      <v-col cols="12">
+        GRAFICS
+        <ChartComponent />
+      </v-col>
+    </v-row>
+
      <v-row>
       <v-col v-for="(actual, index) in options" :key="index" cols="12" sm="6" md="3">
         <botoVotar
