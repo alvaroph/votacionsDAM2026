@@ -20,8 +20,10 @@ onMounted(() => {
         alert("No has fet login!")
         route.push('/')
       }
-      // Engengo el servei de websockets amb el port que tinc configurat al docker compose
-      wsService = new WebSocketService('ws://localhost:3000');
+      // En dev la URL ve de .env.development; en producció nginx fa de proxy a /ws del mateix host
+      const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+      const wsUrl = import.meta.env.VITE_WS_URL || `${protocol}://${location.host}/ws`;
+      wsService = new WebSocketService(wsUrl);
       wsService.connect();
     })
 

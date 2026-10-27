@@ -3,7 +3,7 @@ import { WebSocketServer } from 'ws';
 import fs from 'fs';
 
 const PORT = process.env.PORT || 3000;
-const VOTOS_FILE = 'votos.json';
+const VOTOS_FILE = process.env.VOTOS_FILE || 'votos.json';
 
 // Initialize votes
 let votos = [0, 0, 0, 0];

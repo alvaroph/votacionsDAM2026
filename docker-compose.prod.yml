@@ -1,0 +1,27 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    # Sense "ports": el backend només és accessible des de nginx (xarxa interna)
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - VOTOS_FILE=/usr/src/app/data/votos.json
+    volumes:
+      - votos-data:/usr/src/app/data
+    restart: unless-stopped
+
+volumes:
+  votos-data:
